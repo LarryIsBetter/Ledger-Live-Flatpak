@@ -95,10 +95,10 @@ modules:
       - install -Dm644 squashfs-root/usr/lib/libXss.so.1 /app/lib/libXss.so.1
       - install -Dm644 squashfs-root/usr/lib/libXtst.so.6 /app/lib/libXtst.so.6
 
-      # Copy icudtl.dat from squashfs-root/
+      # Copies icudtl.dat from squashfs-root/
       - install -Dm644 squashfs-root/icudtl.dat /app/bin/icudtl.dat
 
-      # Copy some bullshit I don't know about.
+      # Copies some bullshit I don't know about.
       - install -Dm755 squashfs-root/chrome_crashpad_handler /app/bin/chrome_crashpad_handler
       - install -Dm755 squashfs-root/snapshot_blob.bin /app/bin/snapshot_blob.bin
       - install -Dm755 squashfs-root/v8_context_snapshot.bin /app/bin/v8_context_snapshot.bin
@@ -107,7 +107,7 @@ modules:
       - install -Dm644 squashfs-root/chrome_100_percent.pak /app/bin/chrome_100_percent.pak
       - install -Dm644 squashfs-root/chrome_200_percent.pak /app/bin/chrome_200_percent.pak
 
-      # Copy the app icons
+      # Copies the app icons
       - install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/apps/ledger-live-desktop.png /app/share/icons/hicolor/128x128/apps/com.Ledger.LedgerLive.png
       - install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/ledger-live-desktop.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
       - install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/ledger-live-desktop.png /app/share/icons/hicolor/512x512/apps/com.Ledger.LedgerLive.png
