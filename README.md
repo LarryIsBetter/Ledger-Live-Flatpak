@@ -11,6 +11,12 @@ This was made using the Flatpak-Builder from OpenSUSE's Tumbleweed Distrobox con
 
 All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland and hardware acceleration be default. Simple and easy nothing else.
 
+To build and install the Flatpak run.
+
+flatpak-builder --install --user --force-clean build-dir com.Ledger.LedgerLive.yml
+
+In the same directory as the manifest file.
+
 For your Linux device to see your Ledger via USB check here.
 
 https://support.ledger.com/article/4404389606417-zd
