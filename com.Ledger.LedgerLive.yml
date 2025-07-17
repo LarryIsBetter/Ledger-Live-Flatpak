@@ -1,0 +1,120 @@
+app-id: com.Ledger.LedgerLive
+runtime: org.freedesktop.Platform
+runtime-version: "24.08"
+base: org.electronjs.Electron2.BaseApp
+base-version: "24.08"
+sdk: org.freedesktop.Sdk
+command: run.sh
+separate-locales: false
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --device=all
+  - --share=network
+  - --share=ipc
+  - --talk-name=org.freedesktop.Notifications
+  - --system-talk-name=org.freedesktop.DBus
+
+
+modules:
+
+  # Installs the Ledger AppImage.
+  - name: ledger-live
+    buildsystem: simple
+    sources:
+      - type: file
+ 
+        # Change this to the latest download URL "https://download.live.ledger.com/latest/linux" is NOT a valid URL a good example would be "https://download.live.ledger.com/ledger-live-desktop-2.120.1-linux-x86_64.AppImage"
+        url: https://
+
+        # Run the AppImage through something like Collision to get the SHA256 hash.
+        sha256: 0000000000000000000000000000000000000000000000000000000000000000
+        only-arches: [x86_64]
+
+      # Creates a run.sh file so the Ledger Live binary can be executed.
+      - type: inline
+        dest-filename: run.sh
+        contents: |
+          #!/bin/bash
+          /app/bin/ledger-live-desktop --no-sandbox --ozone-platform=wayland --enable-features=UseOzonePlatform,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL "$@"
+
+      # Creates the Ledger Live desktop file.
+      # Add a version number in "Version="
+      - type: inline
+        dest-filename: com.Ledger.LedgerLive.desktop
+        contents: |
+          [Desktop Entry]
+          Name=Ledger Live
+          Exec=/app/bin/run.sh %U
+          Terminal=false
+          Type=Application
+          Icon=com.Ledger.LedgerLive
+          StartupWMClass=Ledger Live
+          Version=0.00.0
+          Comment=Ledger Live - Desktop
+          MimeType=x-scheme-handler/ledgerlive;
+          Categories=Finance;
+
+
+    build-commands:
+
+
+      # -Dm755 = Executable perms.
+      # -Dm644 - Read & Write perms.      
+
+
+      # Installs the run.sh built earlier.
+      - install -Dm755 run.sh /app/bin/run.sh
+      
+      # Installs the Ledger Live desktop file built earlier.
+      - install -Dm644 com.Ledger.LedgerLive.desktop /app/share/applications/com.Ledger.LedgerLive.desktop
+
+      # Makes the installed AppImage executable.
+      - chmod +x ledger-live-desktop*.AppImage
+
+      # Extracts the AppImage
+      - ./ledger-live-desktop*.AppImage --appimage-extract
+
+      # Copies the Ledger Live binary.
+      - install -Dm755 squashfs-root/ledger-live-desktop /app/bin/ledger-live-desktop
+
+      # Copies libraries from squashfs-root/
+      - install -Dm644 squashfs-root/libffmpeg.so /app/bin/libffmpeg.so
+      - install -Dm644 squashfs-root/libEGL.so /app/bin/libEGL.so
+      - install -Dm644 squashfs-root/libGLESv2.so /app/bin/libGLESv2.so
+      - install -Dm644 squashfs-root/libvk_swiftshader.so /app/bin/libvk_swiftshader.so
+      - install -Dm644 squashfs-root/libvulkan.so.1 /app/bin/libvulkan.so.1
+
+      # Copies libraries from squashfs-root/usr/lib/
+      - install -Dm644 squashfs-root/usr/lib/libappindicator.so.1 /app/lib/libappindicator.so.1
+      - install -Dm644 squashfs-root/usr/lib/libgconf-2.so.4 /app/lib/libgconf-2.so.4
+      - install -Dm644 squashfs-root/usr/lib/libindicator.so.7 /app/lib/libindicator.so.7
+      - install -Dm644 squashfs-root/usr/lib/libnotify.so.4 /app/lib/libnotify.so.4
+      - install -Dm644 squashfs-root/usr/lib/libXss.so.1 /app/lib/libXss.so.1
+      - install -Dm644 squashfs-root/usr/lib/libXtst.so.6 /app/lib/libXtst.so.6
+
+      # Copy icudtl.dat from squashfs-root/
+      - install -Dm644 squashfs-root/icudtl.dat /app/bin/icudtl.dat
+
+      # Copy some bullshit I don't know about.
+      - install -Dm755 squashfs-root/chrome_crashpad_handler /app/bin/chrome_crashpad_handler
+      - install -Dm755 squashfs-root/snapshot_blob.bin /app/bin/snapshot_blob.bin
+      - install -Dm755 squashfs-root/v8_context_snapshot.bin /app/bin/v8_context_snapshot.bin
+      - install -Dm644 squashfs-root/vk_swiftshader_icd.json /app/bin/vk_swiftshader_icd.json
+      - install -Dm644 squashfs-root/resources.pak /app/bin/resources.pak
+      - install -Dm644 squashfs-root/chrome_100_percent.pak /app/bin/chrome_100_percent.pak
+      - install -Dm644 squashfs-root/chrome_200_percent.pak /app/bin/chrome_200_percent.pak
+
+      # Copy the app icons
+      - install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/apps/ledger-live-desktop.png /app/share/icons/hicolor/128x128/apps/com.Ledger.LedgerLive.png
+      - install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/ledger-live-desktop.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
+      - install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/ledger-live-desktop.png /app/share/icons/hicolor/512x512/apps/com.Ledger.LedgerLive.png
+
+      # Copies some other bullshit I don't know about.
+      - cp -r squashfs-root/locales /app/bin/locales
+      - cp -r squashfs-root/resources /app/bin/resources
+
+      # Clean up
+      - rm -rf squashfs-root
