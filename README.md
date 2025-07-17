@@ -1,2 +1,12 @@
 # Ledger-Live-Flatpak
 Flatpak manifest to build Ledger Live Desktop from the AppImage.
+
+WARNING!!
+
+I made this for MYSELF and for MY PERSONAL USE.
+
+If you use this don't come crying to me if your wallet gets drained I don't know how secure this even is.
+
+This was made using the Flatpak-Builder from OpenSUSE's Tumbleweed Distrobox container so if you have issues I don't know try that.
+
+All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland and hardware acceleration be default. Simple and easy nothing else.
