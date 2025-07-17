@@ -11,7 +11,7 @@ You've been warned.
 
 This was made using the Flatpak-Builder from OpenSUSE's Tumbleweed Distrobox container so if you have issues I don't know try that.
 
-All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland and hardware acceleration be default. Simple and easy nothing else.
+All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland and hardware acceleration be default (unsure about Nvidia on this one). Simple and easy nothing else.
 
 To build and install the Flatpak run.
 
