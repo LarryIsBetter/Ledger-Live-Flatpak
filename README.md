@@ -10,3 +10,13 @@ If you use this don't come crying to me if your wallet gets drained I don't know
 This was made using the Flatpak-Builder from OpenSUSE's Tumbleweed Distrobox container so if you have issues I don't know try that.
 
 All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland and hardware acceleration be default. Simple and easy nothing else.
+
+For your Linux device to see your Ledger via USB check here.
+
+https://support.ledger.com/article/4404389606417-zd
+
+Or just run.
+
+wget -q -O - https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh | sudo bash
+
+Whatever you're comfortable with.
