@@ -1,4 +1,7 @@
 # Ledger-Live-Flatpak
+
+Not affilated with Ledger in anyway.
+
 Flatpak manifest to build Ledger Live Desktop from the AppImage.
 
 WARNING!!
