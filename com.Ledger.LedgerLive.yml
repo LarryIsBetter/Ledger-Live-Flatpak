@@ -82,12 +82,12 @@ modules:
       - install -Dm644 squashfs-root/libvulkan.so.1 /app/bin/libvulkan.so.1
 
       # Copies libraries from squashfs-root/usr/lib/
-      - install -Dm644 squashfs-root/usr/lib/libappindicator.so.1 /app/usr/lib/libappindicator.so.1
-      - install -Dm644 squashfs-root/usr/lib/libgconf-2.so.4 /app/usr/lib/libgconf-2.so.4
-      - install -Dm644 squashfs-root/usr/lib/libindicator.so.7 /app/usr/lib/libindicator.so.7
-      - install -Dm644 squashfs-root/usr/lib/libnotify.so.4 /app/usr/lib/libnotify.so.4
-      - install -Dm644 squashfs-root/usr/lib/libXss.so.1 /app/usr/lib/libXss.so.1
-      - install -Dm644 squashfs-root/usr/lib/libXtst.so.6 /app/usr/lib/libXtst.so.6
+      - install -Dm644 squashfs-root/usr/lib/libappindicator.so.1 /app/bin/usr/lib/libappindicator.so.1
+      - install -Dm644 squashfs-root/usr/lib/libgconf-2.so.4 /app/bin/usr/lib/libgconf-2.so.4
+      - install -Dm644 squashfs-root/usr/lib/libindicator.so.7 /app/bin/usr/lib/libindicator.so.7
+      - install -Dm644 squashfs-root/usr/lib/libnotify.so.4 /app/bin/usr/lib/libnotify.so.4
+      - install -Dm644 squashfs-root/usr/lib/libXss.so.1 /app/bin/usr/lib/libXss.so.1
+      - install -Dm644 squashfs-root/usr/lib/libXtst.so.6 /app/bin/usr/lib/libXtst.so.6
 
       # Copy icudtl.dat from squashfs-root/
       - install -Dm444 squashfs-root/icudtl.dat /app/bin/icudtl.dat
