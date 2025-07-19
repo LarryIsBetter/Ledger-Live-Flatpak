@@ -14,9 +14,9 @@ You've been warned.
 
 This was made using the Flatpak-Builder from OpenSUSE's Tumbleweed Distrobox container so if you have issues I don't know try that.
 
-All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland and hardware acceleration by default (unsure about Nvidia on this one). Simple and easy nothing else.
+All the manifest does is download the AppImage from Ledger and packs it up into a Flatpak, it also enables Wayland by default. Simple and easy nothing else.
 
-To build and install the Flatpak run.
+To build and install the Flatpak first modify the file .yml and the .desktop files accordingly then run.
 
 flatpak-builder --install --user --force-clean build-dir com.Ledger.LedgerLive.yml
 
