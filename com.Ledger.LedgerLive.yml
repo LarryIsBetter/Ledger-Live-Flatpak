@@ -9,6 +9,7 @@ command: run.sh
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
+  - --socket=pulseaudio
   - --device=all
   - --share=network
 
