@@ -37,89 +37,14 @@ modules:
     build-commands:
       - chmod +x ledger-live-desktop*.AppImage
       - ./ledger-live-desktop*.AppImage --appimage-extract
-      - install -Dm755 squashfs-root/ledger-live-desktop /app/bin/ledger-live-desktop
-      - install -Dm644 squashfs-root/libffmpeg.so /app/bin/libffmpeg.so
-      - install -Dm644 squashfs-root/libEGL.so /app/bin/libEGL.so
-      - install -Dm644 squashfs-root/libGLESv2.so /app/bin/libGLESv2.so
-      - install -Dm644 squashfs-root/libvk_swiftshader.so /app/bin/libvk_swiftshader.so
-      - install -Dm644 squashfs-root/libvulkan.so.1 /app/bin/libvulkan.so.1
-      - install -Dm644 squashfs-root/icudtl.dat /app/bin/icudtl.dat
-      - install -Dm755 squashfs-root/chrome_crashpad_handler /app/bin/chrome_crashpad_handler
-      - install -Dm755 squashfs-root/snapshot_blob.bin /app/bin/snapshot_blob.bin
-      - install -Dm755 squashfs-root/v8_context_snapshot.bin /app/bin/v8_context_snapshot.bin
-      - install -Dm644 squashfs-root/vk_swiftshader_icd.json /app/bin/vk_swiftshader_icd.json
-      - install -Dm644 squashfs-root/resources.pak /app/bin/resources.pak
-      - install -Dm644 squashfs-root/chrome_100_percent.pak /app/bin/chrome_100_percent.pak
-      - install -Dm644 squashfs-root/chrome_200_percent.pak /app/bin/chrome_200_percent.pak
-      - install -Dm644 squashfs-root/LICENSE.electron.txt /app/bin/LICENSE.electron.txt
-      - install -Dm644 squashfs-root/LICENSES.chromium.html /app/bin/LICENSES.chromium.html
-      - install -Dm644 squashfs-root/usr/lib/libappindicator.so.1 /app/bin/usr/lib/libappindicator.so.1
-      - install -Dm644 squashfs-root/usr/lib/libgconf-2.so.4 /app/bin/usr/lib/libgconf-2.so.4
-      - install -Dm644 squashfs-root/usr/lib/libindicator.so.7 /app/bin/usr/lib/libindicator.so.7
-      - install -Dm644 squashfs-root/usr/lib/libnotify.so.4 /app/bin/usr/lib/libnotify.so.4
-      - install -Dm644 squashfs-root/usr/lib/libXss.so.1 /app/bin/usr/lib/libXss.so.1
-      - install -Dm644 squashfs-root/usr/lib/libXtst.so.6 /app/bin/usr/lib/libXtst.so.6
-      - install -Dm644 squashfs-root/locales/af.pak /app/bin/locales/af.pak
-      - install -Dm644 squashfs-root/locales/am.pak /app/bin/locales/am.pak
-      - install -Dm644 squashfs-root/locales/ar.pak /app/bin/locales/ar.pak
-      - install -Dm644 squashfs-root/locales/bg.pak /app/bin/locales/bg.pak
-      - install -Dm644 squashfs-root/locales/bn.pak /app/bin/locales/bn.pak
-      - install -Dm644 squashfs-root/locales/ca.pak /app/bin/locales/ca.pak
-      - install -Dm644 squashfs-root/locales/cs.pak /app/bin/locales/cs.pak
-      - install -Dm644 squashfs-root/locales/da.pak /app/bin/locales/da.pak
-      - install -Dm644 squashfs-root/locales/de.pak /app/bin/locales/de.pak
-      - install -Dm644 squashfs-root/locales/el.pak /app/bin/locales/el.pak
-      - install -Dm644 squashfs-root/locales/en-GB.pak /app/bin/locales/en-GB.pak
-      - install -Dm644 squashfs-root/locales/en-US.pak /app/bin/locales/en-US.pak
-      - install -Dm644 squashfs-root/locales/es-419.pak /app/bin/locales/es-419.pak
-      - install -Dm644 squashfs-root/locales/es.pak /app/bin/locales/es.pak
-      - install -Dm644 squashfs-root/locales/et.pak /app/bin/locales/et.pak
-      - install -Dm644 squashfs-root/locales/fa.pak /app/bin/locales/fa.pak
-      - install -Dm644 squashfs-root/locales/fil.pak /app/bin/locales/fil.pak
-      - install -Dm644 squashfs-root/locales/fi.pak /app/bin/locales/fi.pak
-      - install -Dm644 squashfs-root/locales/fr.pak /app/bin/locales/fr.pak
-      - install -Dm644 squashfs-root/locales/gu.pak /app/bin/locales/gu.pak
-      - install -Dm644 squashfs-root/locales/he.pak /app/bin/locales/he.pak
-      - install -Dm644 squashfs-root/locales/hi.pak /app/bin/locales/hi.pak
-      - install -Dm644 squashfs-root/locales/hr.pak /app/bin/locales/hr.pak
-      - install -Dm644 squashfs-root/locales/hu.pak /app/bin/locales/hu.pak
-      - install -Dm644 squashfs-root/locales/id.pak /app/bin/locales/id.pak
-      - install -Dm644 squashfs-root/locales/it.pak /app/bin/locales/it.pak
-      - install -Dm644 squashfs-root/locales/ja.pak /app/bin/locales/ja.pak
-      - install -Dm644 squashfs-root/locales/kn.pak /app/bin/locales/kn.pak
-      - install -Dm644 squashfs-root/locales/ko.pak /app/bin/locales/ko.pak
-      - install -Dm644 squashfs-root/locales/lt.pak /app/bin/locales/lt.pak
-      - install -Dm644 squashfs-root/locales/lv.pak /app/bin/locales/lv.pak
-      - install -Dm644 squashfs-root/locales/ml.pak /app/bin/locales/ml.pak
-      - install -Dm644 squashfs-root/locales/mr.pak /app/bin/locales/mr.pak
-      - install -Dm644 squashfs-root/locales/ms.pak /app/bin/locales/ms.pak
-      - install -Dm644 squashfs-root/locales/nb.pak /app/bin/locales/nb.pak
-      - install -Dm644 squashfs-root/locales/nl.pak /app/bin/locales/nl.pak
-      - install -Dm644 squashfs-root/locales/pl.pak /app/bin/locales/pl.pak
-      - install -Dm644 squashfs-root/locales/pt-BR.pak /app/bin/locales/pt-BR.pak
-      - install -Dm644 squashfs-root/locales/pt-PT.pak /app/bin/locales/pt-PT.pak
-      - install -Dm644 squashfs-root/locales/ro.pak /app/bin/locales/ro.pak
-      - install -Dm644 squashfs-root/locales/ru.pak /app/bin/locales/ru.pak
-      - install -Dm644 squashfs-root/locales/sk.pak /app/bin/locales/sk.pak
-      - install -Dm644 squashfs-root/locales/sl.pak /app/bin/locales/sl.pak
-      - install -Dm644 squashfs-root/locales/sr.pak /app/bin/locales/sr.pak
-      - install -Dm644 squashfs-root/locales/sv.pak /app/bin/locales/sv.pak
-      - install -Dm644 squashfs-root/locales/sw.pak /app/bin/locales/sw.pak
-      - install -Dm644 squashfs-root/locales/ta.pak /app/bin/locales/ta.pak
-      - install -Dm644 squashfs-root/locales/te.pak /app/bin/locales/te.pak
-      - install -Dm644 squashfs-root/locales/th.pak /app/bin/locales/th.pak
-      - install -Dm644 squashfs-root/locales/tr.pak /app/bin/locales/tr.pak
-      - install -Dm644 squashfs-root/locales/uk.pak /app/bin/locales/uk.pak
-      - install -Dm644 squashfs-root/locales/ur.pak /app/bin/locales/ur.pak
-      - install -Dm644 squashfs-root/locales/vi.pak /app/bin/locales/vi.pak
-      - install -Dm644 squashfs-root/locales/zh-CN.pak /app/bin/locales/zh-CN.pak
-      - install -Dm644 squashfs-root/locales/zh-TW.pak /app/bin/locales/zh-TW.pak
-      - install -Dm644 squashfs-root/resources/app.asar /app/bin/resources/app.asar
-      - install -Dm644 squashfs-root/resources/app-update.yml /app/bin/resources/app-update.yml
+      - cp -r squashfs-root/* /app/bin/
+
+      - rm /app/bin/ledger-live-desktop.desktop
+      - rm /app/bin/AppRun
+      - rm /app/bin/ledger-live-desktop.png
+      - rm -r /app/bin/usr/share/
+  
       - install -Dm755 run.sh /app/bin/run.sh
-      - install -Dm644 com.Ledger.LedgerLive.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
-      - install -Dm644 com.Ledger.LedgerLive.desktop /app/share/applications/com.Ledger.LedgerLive.desktop
-      - rm -rf squashfs-root
-      - rm -rf ledger-live-desktop*.AppImage
-      - rm -rf run.sh
-      - rm -rf com.Ledger.LedgerLive.desktop
+      - install -Dm444 com.Ledger.LedgerLive.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
+      - install -Dm444 com.Ledger.LedgerLive.metainfo.xml /app/share/metainfo/com.Ledger.LedgerLive.appdata.xml
+      - install -Dm444 com.Ledger.LedgerLive.desktop /app/share/applications/com.Ledger.LedgerLive.desktop
