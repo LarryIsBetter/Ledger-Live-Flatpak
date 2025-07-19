@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Ledger Live
+Exec=/app/bin/run.sh %U
+Terminal=false
+Type=Application
+Icon=com.Ledger.LedgerLive
+StartupWMClass=Ledger Live
+Version=2.120.1
+Comment=Ledger Live - Desktop
+MimeType=x-scheme-handler/ledgerlive;
+Categories=Finance;
