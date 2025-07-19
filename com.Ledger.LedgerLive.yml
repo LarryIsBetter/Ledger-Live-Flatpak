@@ -34,13 +34,9 @@ modules:
       - type: file
         path: com.Ledger.LedgerLive.png
 
-      - type: file
-        path: com.Ledger.LedgerLive.appdata.xml
-
     build-commands:
       - chmod +x ledger-live-desktop*.AppImage
       - ./ledger-live-desktop*.AppImage --appimage-extract
-
       - install -Dm755 squashfs-root/ledger-live-desktop /app/bin/ledger-live-desktop
       - install -Dm644 squashfs-root/libffmpeg.so /app/bin/libffmpeg.so
       - install -Dm644 squashfs-root/libEGL.so /app/bin/libEGL.so
@@ -120,13 +116,10 @@ modules:
       - install -Dm644 squashfs-root/locales/zh-TW.pak /app/bin/locales/zh-TW.pak
       - install -Dm644 squashfs-root/resources/app.asar /app/bin/resources/app.asar
       - install -Dm644 squashfs-root/resources/app-update.yml /app/bin/resources/app-update.yml
- 
       - install -Dm755 run.sh /app/bin/run.sh
       - install -Dm644 com.Ledger.LedgerLive.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
-      - install -Dm644 com.Ledger.LedgerLive.appdata.xml /app/share/metainfo/com.Ledger.LedgerLive.appdata.xml
       - install -Dm644 com.Ledger.LedgerLive.desktop /app/share/applications/com.Ledger.LedgerLive.desktop
       - rm -rf squashfs-root
       - rm -rf ledger-live-desktop*.AppImage
       - rm -rf run.sh
       - rm -rf com.Ledger.LedgerLive.desktop
-      - rm -rf com.Ledger.LedgerLive.appdata.xml
