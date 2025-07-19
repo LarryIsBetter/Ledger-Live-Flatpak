@@ -46,5 +46,4 @@ modules:
   
       - install -Dm755 run.sh /app/bin/run.sh
       - install -Dm444 com.Ledger.LedgerLive.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
-      - install -Dm444 com.Ledger.LedgerLive.metainfo.xml /app/share/metainfo/com.Ledger.LedgerLive.appdata.xml
       - install -Dm444 com.Ledger.LedgerLive.desktop /app/share/applications/com.Ledger.LedgerLive.desktop
