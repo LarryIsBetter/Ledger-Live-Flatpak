@@ -43,6 +43,7 @@ modules:
       - rm /app/bin/ledger-live-desktop.desktop
       - rm /app/bin/AppRun
       - rm /app/bin/ledger-live-desktop.png
+      - rm /app/bin/chrome-sandbox
       - rm -r /app/bin/usr/share/
   
       - install -Dm755 run.sh /app/bin/run.sh
