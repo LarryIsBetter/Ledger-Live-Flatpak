@@ -32,9 +32,6 @@ modules:
         path: com.Ledger.LedgerLive.png
         dest-filename: com.Ledger.LedgerLive.png
       - type: file
-        path: com.Ledger.LedgerLive.metainfo.xml
-        dest-filename: com.Ledger.LedgerLive.metainfo.xml
-      - type: file
         path: com.Ledger.LedgerLive.desktop
         dest-filename: com.Ledger.LedgerLive.desktop
       - type: file
