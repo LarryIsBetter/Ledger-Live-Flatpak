@@ -1,10 +1,9 @@
-app-id: com.Ledger.LedgerLive
+id: com.Ledger.LedgerLive
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
-base: org.electronjs.Electron2.BaseApp
-base-version: "24.08"
+runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
-separate-locales: false
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node18
 command: run.sh
 finish-args:
   - --socket=wayland
@@ -14,38 +13,50 @@ finish-args:
   - --share=network
 
 modules:
+  - name: zypak
+    sources:
+      - type: git
+        url: https://github.com/refi64/zypak
+        tag: v2024.01.17
+
   - name: ledger-live
     buildsystem: simple
     sources:
-      - type: file
-       
-        # Change this to the latest download URL "https://download.live.ledger.com/latest/linux" is NOT a valid URL a good example would be "https://download.live.ledger.com/ledger-live-desktop-2.120.1-linux-x86_64.AppImage"
-        url: https://
-
-        # Run the AppImage through something like Collision to get the SHA256 hash.
-        sha256: 0000000000000000000000000000000000000000000000000000000000
-        only-arches: [x86_64]
-
+      - type: git
+        url: https://github.com/LedgerHQ/ledger-live.git
+        tag: '@ledgerhq/live-desktop@2.124.0' # Change this to your desired version
       - type: file
         path: run.sh
-
-      - type: file
-        path: com.Ledger.LedgerLive.desktop
-
+        dest-filename: run.sh
       - type: file
         path: com.Ledger.LedgerLive.png
-
+        dest-filename: com.Ledger.LedgerLive.png
+      - type: file
+        path: com.Ledger.LedgerLive.metainfo.xml
+        dest-filename: com.Ledger.LedgerLive.metainfo.xml
+      - type: file
+        path: com.Ledger.LedgerLive.desktop
+        dest-filename: com.Ledger.LedgerLive.desktop
+      - type: file
+        url: https://github.com/pnpm/pnpm/releases/download/v10.15.0/pnpm-linux-x64
+        dest-filename: pnpm
+        sha256: c9548da52cba52401a8419e1dbc135e2206f74508c18e50ef1ce68e70e7cbf02
+        only-arches:
+          - x86_64
+    build-options:
+      build-args:
+        - --share=network
+      append-path: /usr/lib/sdk/node18/bin:/run/build/ledger-live/bin
     build-commands:
-      - chmod +x ledger-live-desktop*.AppImage
-      - ./ledger-live-desktop*.AppImage --appimage-extract
-      - cp -r squashfs-root/* /app/bin/
-
-      - rm /app/bin/ledger-live-desktop.desktop
-      - rm /app/bin/AppRun
-      - rm /app/bin/ledger-live-desktop.png
-      - rm /app/bin/chrome-sandbox
-      - rm -r /app/bin/usr/share/
-  
       - install -Dm755 run.sh /app/bin/run.sh
       - install -Dm444 com.Ledger.LedgerLive.png /app/share/icons/hicolor/256x256/apps/com.Ledger.LedgerLive.png
       - install -Dm444 com.Ledger.LedgerLive.desktop /app/share/applications/com.Ledger.LedgerLive.desktop
+      - install -Dm755 pnpm /run/build/ledger-live/bin/pnpm
+      - pnpm i
+      - pnpm release:lld
+
+      - cp -r apps/ledger-live-desktop/dist/linux-unpacked/* /app/bin/
+
+      - rm /app/bin/LICENSES.chromium.html
+      - rm /app/bin/chrome-sandbox
+      - rm /app/bin/LICENSE.electron.txt
